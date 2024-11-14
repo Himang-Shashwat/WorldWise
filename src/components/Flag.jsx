@@ -1,8 +1,6 @@
-import PropTypes from "prop-types";
+import { FlagPropTypes } from "../proptypes/customPropTypes";
 
-Flag.propTypes = {
-  countryCode: PropTypes.string.isRequired,
-};
+Flag.propTypes = FlagPropTypes;
 
 function Flag({ countryCode }) {
   return (

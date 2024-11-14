@@ -3,26 +3,17 @@ import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
 import PropTypes from "prop-types";
+import { useCities } from "../contexts/CitiesContext";
+import { CountryListPropTypes } from "../proptypes/customPropTypes";
 
 CountryList.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      cityName: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
-      countryCode: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      notes: PropTypes.string,
-      position: PropTypes.shape({
-        lat: PropTypes.number.isRequired,
-        lng: PropTypes.number.isRequired,
-      }).isRequired,
-    })
-  ).isRequired,
+  cities: CountryListPropTypes,
 };
 
-function CountryList({ cities, isLoading }) {
+function CountryList() {
+  const { cities, isLoading } = useCities();
+
   if (isLoading) return <Spinner />;
 
   if (!cities.length)

@@ -1,9 +1,7 @@
+import { MessagePropTypes } from "../proptypes/customPropTypes";
 import styles from "./Message.module.css";
-import PropTypes from "prop-types";
 
-Message.propTypes = {
-  message: PropTypes.string.isRequired,
-};
+Message.propTypes = MessagePropTypes;
 
 function Message({ message }) {
   return (

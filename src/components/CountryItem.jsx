@@ -1,12 +1,9 @@
 import styles from "./CountryItem.module.css";
-import PropTypes from "prop-types";
 import Flag from "./Flag";
+import { CountryPropTypes } from "../proptypes/customPropTypes";
 
 CountryItem.propTypes = {
-  country: PropTypes.shape({
-    countryCode: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
-  }).isRequired,
+  country: CountryPropTypes.isRequired,
 };
 
 function CountryItem({ country }) {
