@@ -11,7 +11,7 @@ const ButtonPropTypes = {
   type: PropTypes.string.isRequired,
 };
 
-const CityPropTypes = PropTypes.shape({
+const BaseCityProps = {
   id: PropTypes.number.isRequired,
   cityName: PropTypes.string.isRequired,
   countryCode: PropTypes.string.isRequired,
@@ -20,19 +20,19 @@ const CityPropTypes = PropTypes.shape({
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
   }).isRequired,
+};
+
+const CityPropTypes = PropTypes.shape(BaseCityProps).isRequired;
+
+const CityListPropTypes = PropTypes.shape({
+  ...BaseCityProps,
+  notes: PropTypes.string,
 }).isRequired;
 
-const CityListPropTypes = PropTypes.arrayOf(
-  CityPropTypes.shape({
-    notes: PropTypes.string,
-  }).isRequired
-);
-
-const CountryListPropTypes = PropTypes.arrayOf(
-  CityPropTypes.shape({
-    country: PropTypes.string.isRequired,
-  })
-);
+const CountryListPropTypes = PropTypes.shape({
+  ...BaseCityProps,
+  country: PropTypes.string,
+});
 
 const FlagPropTypes = { countryCode: PropTypes.string };
 
